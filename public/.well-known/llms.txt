@@ -1,0 +1,56 @@
+# Mirrorfolio
+
+> Early visibility for caregivers, without surveillance.
+
+## What is Mirrorfolio?
+
+Mirrorfolio is a non-intrusive remote care system designed for adult children who worry about aging parents living alone. It provides awareness of daily patterns without cameras, microphones, or location tracking.
+
+## Key Principles
+
+1. **Dignity over surveillance**: We never use cameras, microphones, or track location
+2. **Awareness, not monitoring**: You see patterns, not activities
+3. **Parent-first design**: The parent's home is their space, not a monitored facility
+4. **India-first**: Built in India for Indian families, with global intent
+
+## What Mirrorfolio Does
+
+- Detects routine activity patterns (is the kitchen being used? is there movement?)
+- Alerts caregivers only when patterns break unexpectedly
+- Provides peace of mind without invading privacy
+
+## What Mirrorfolio Does NOT Do
+
+- No video or audio recording
+- No location tracking
+- No biometric data collection
+- No health monitoring
+- No selling data to third parties
+
+## Target Users
+
+- Adult children living in different cities from aging parents
+- Families where elderly parents live alone
+- Caregivers who want awareness without surveillance
+
+## Founder
+
+Mirrorfolio is founded and led by Kabeer Hadi, based in India. Contact: kabeer@mirrorfolio.com
+
+## Key Pages
+
+- Homepage: https://mirrorfolio.com/
+- How It Works: https://mirrorfolio.com/how-it-works
+- Pilot Program: https://mirrorfolio.com/pilot
+- Ethics & Boundaries: https://mirrorfolio.com/ethics
+- About the Founder: https://mirrorfolio.com/founder
+- Privacy Policy: https://mirrorfolio.com/privacy
+- Contact: https://mirrorfolio.com/contact
+
+## Pricing
+
+Pilot program: ₹8,499 (approximately $100 USD)
+
+## Current Status
+
+In pilot phase with founding families in India.

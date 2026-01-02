@@ -1,0 +1,16 @@
+{
+  "name": "Mirrorfolio",
+  "short_name": "Mirrorfolio",
+  "description": "Early visibility for caregivers, without surveillance. A non-intrusive way for adult children to stay aware of aging parents living alone.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fbfaf8",
+  "theme_color": "#3d3530",
+  "icons": [
+    {
+      "src": "/logo icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

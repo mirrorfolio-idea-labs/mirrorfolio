@@ -1,0 +1,10 @@
+export { EthicsOpeningSection } from "./ethics-opening-section";
+export { CorePrincipleSection } from "./core-principle-section";
+export { WillNotDoSection } from "./will-not-do-section";
+export { ConsentSection } from "./consent-section";
+export { SilenceDesignSection } from "./silence-design-section";
+export { EscalationLimitsSection } from "./escalation-limits-section";
+export { ResponsibilitySection } from "./responsibility-section";
+export { DataSection } from "./data-section";
+export { WhyPaidSection } from "./why-paid-section";
+export { EthicsClosingSection } from "./ethics-closing-section";
