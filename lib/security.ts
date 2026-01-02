@@ -28,7 +28,6 @@ export function sanitizeString(input: string): string {
   if (typeof input !== "string") return "";
 
   // Remove control characters (except newlines and tabs in messages)
-  // eslint-disable-next-line no-control-regex
   const sanitized = input.replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, "");
 
   // Trim whitespace
@@ -64,7 +63,6 @@ export function sanitizeMessage(message: string): string {
   if (typeof message !== "string") return "";
 
   // Remove control characters except newlines
-  // eslint-disable-next-line no-control-regex
   const cleaned = message.replace(/[\x00-\x09\x0B\x0C\x0E-\x1F\x7F]/g, "");
 
   return cleaned.trim();
