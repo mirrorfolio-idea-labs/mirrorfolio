@@ -86,7 +86,7 @@ export function Header() {
               </SheetHeader>
               <nav
                 id="mobile-nav"
-                className="flex flex-col"
+                className="flex flex-col px-6"
                 aria-label="Mobile navigation"
               >
                 {navLinks.map((link, i) => (
