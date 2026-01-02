@@ -304,6 +304,10 @@ export function getUserConfirmationEmail(data: {
       process.env.SMTP_FROM || process.env.SMTP_USER
     }>`,
     to: data.email,
+    replyTo:
+      process.env.SMTP_FROM ||
+      process.env.SMTP_USER ||
+      "kabeer@mirrorfolio.com",
     subject: "Thanks for reaching out — Kabeer from Mirrorfolio",
     html: getEmailTemplate(content, footer),
     text: `Hi ${
