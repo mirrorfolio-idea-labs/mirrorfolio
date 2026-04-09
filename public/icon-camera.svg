@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Wall mount -->
+  <rect x="28" y="4" width="8" height="10" rx="2" fill="#A8A29E"/>
+  <rect x="26" y="12" width="12" height="4" rx="1" fill="#78716C"/>
+  <!-- Camera body -->
+  <rect x="14" y="16" width="36" height="22" rx="4" fill="#44403C"/>
+  <rect x="16" y="18" width="32" height="18" rx="3" fill="#57534E"/>
+  <!-- Lens housing -->
+  <circle cx="32" cy="27" r="8" fill="#292524"/>
+  <circle cx="32" cy="27" r="6" fill="#1C1917"/>
+  <circle cx="32" cy="27" r="3" fill="#44403C"/>
+  <circle cx="32" cy="27" r="1.5" fill="#78716C"/>
+  <!-- Lens glare -->
+  <circle cx="30" cy="25" r="1" fill="#A8A29E" opacity="0.5"/>
+  <!-- Red indicator light -->
+  <circle cx="43" cy="21" r="2" fill="#C2491D"/>
+  <circle cx="43" cy="21" r="1.2" fill="#E85D3A" opacity="0.8"/>
+  <!-- Base/shadow -->
+  <ellipse cx="32" cy="42" rx="20" ry="3" fill="#1C1917" opacity="0.1"/>
+  <!-- Cable -->
+  <path d="M32 38 L32 48 Q32 52 36 54" stroke="#78716C" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+</svg>

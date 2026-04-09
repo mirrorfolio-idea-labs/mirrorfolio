@@ -1,0 +1,56 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id        String       @id @default(uuid())
+  email     String       @unique
+  name      String?
+  phone     String?
+  bookings  PreBooking[]
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+}
+
+model PreBooking {
+  id                String   @id @default(uuid())
+  userId            String
+  user              User     @relation(fields: [userId], references: [id])
+  city              String
+  condition         String
+  livingSituation   String
+  dischargeTimeline String
+  amount            Float    @default(499)
+  status            String   @default("PENDING") // PENDING, CONFIRMED, CANCELLED
+  payment           Payment?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+model Payment {
+  id                 String     @id @default(uuid())
+  preBookingId       String     @unique
+  preBooking         PreBooking @relation(fields: [preBookingId], references: [id])
+  razorpayOrderId    String     @unique
+  razorpayPaymentId  String?    @unique
+  razorpaySignature  String?
+  amount             Float
+  currency           String     @default("INR")
+  status             String     @default("CREATED") // CREATED, SUCCESS, FAILED
+  createdAt          DateTime   @default(now())
+  updatedAt          DateTime   @updatedAt
+}
+
+model EmailLog {
+  id        String   @id @default(uuid())
+  to        String
+  subject   String
+  type      String   // WELCOME, CONFIRMATION, NEWSLETTER
+  status    String   @default("SENT") // SENT, FAILED
+  errorMsg  String?
+  createdAt DateTime @default(now())
+}
