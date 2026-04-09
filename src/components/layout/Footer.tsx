@@ -13,7 +13,7 @@ export default function Footer() {
                 alt="Mirrorfolio" 
                 width={140} 
                 height={28} 
-                className="invert dark:invert-0 opacity-90 hover:opacity-100 transition-opacity" 
+                className="invert" 
               />
             </div>
             <p className="font-sentence text-muted-foreground text-base max-w-xs leading-relaxed mb-6">
