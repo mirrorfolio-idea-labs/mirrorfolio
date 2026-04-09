@@ -43,7 +43,7 @@ export default function Navbar() {
             width={120} 
             height={24} 
             priority
-            className="invert dark:invert-0 drop-shadow-sm transition-opacity hover:opacity-80" 
+            className="invert" 
           />
         </Link>
 
