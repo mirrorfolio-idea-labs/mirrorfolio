@@ -1,43 +1,57 @@
-import type { Metadata } from "next";
-import { Lora, DM_Sans } from "next/font/google";
-import "./globals.css";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { Toaster } from "@/components/ui/toaster";
-import { TooltipProvider } from "@/components/ui/tooltip";
+import type { Metadata, Viewport } from "next";
+import { JetBrains_Mono } from "next/font/google";
 
-const lora = Lora({ subsets: ["latin"], variable: "--font-lora" });
-const dmSans = DM_Sans({ subsets: ["latin"], variable: "--font-dm-sans" });
+import { jsonLd } from "@/lib/json-ld";
+import { siteUrl } from "@/lib/site";
+
+import "./globals.css";
+
+/**
+ * Self-hosted replacement for the old
+ * `fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600` link.
+ * Same family, same four weights — no render-blocking third-party request.
+ */
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
-  title: "Mirrorfolio — AI Care Copilot for Families",
-  description: "Monitor your elderly parent's recovery routine remotely — no cameras, no apps for them, just peace of mind. Join early access.",
-  authors: [{ name: "Mirrorfolio" }],
+  metadataBase: new URL(siteUrl),
+  authors: [{ name: "Mirrorfolio Labs" }],
   openGraph: {
-    title: "Mirrorfolio — Know they're okay, from anywhere",
-    description: "AI-powered recovery monitoring for elderly parents. No cameras. No apps for them. Just peace of mind for you.",
-    type: "website",
-    url: "https://mirrorfolio.com",
+    siteName: "Mirrorfolio",
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "Mirrorfolio — AI Care Copilot for Families",
-    description: "Monitor your parent's recovery remotely. No cameras. No apps for them. Just peace of mind.",
-  }
+  icons: {
+    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
+  },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#f4f3f1",
+};
+
+const organizationLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Mirrorfolio",
+  description: "Ambient care intelligence for older adults — edge AI, no cameras, no wearables.",
+  url: "/",
+};
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
-      <body className={`${lora.variable} ${dmSans.variable} antialiased`}>
-        <TooltipProvider>
-          {children}
-          <Toaster />
-          <Sonner />
-        </TooltipProvider>
+    <html lang="en" className={jetbrainsMono.variable}>
+      <body>
+        {children}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: jsonLd(organizationLd) }}
+        />
       </body>
     </html>
   );

@@ -1,23 +1,21 @@
 import Link from "next/link";
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
 
 export default function NotFound() {
-
   return (
-    <>
-      <Navbar />
-      <div className="flex min-h-[70vh] items-center justify-center bg-background">
-        <div className="text-center">
-          <h1 className="mb-4 text-6xl font-sentence text-foreground">404</h1>
-          <p className="mb-6 text-xl text-muted-foreground font-statement">Oops! Page not found</p>
-          <Link href="/" className="text-primary font-statement-medium hover:text-clay transition-colors">
-            Return to Home
-          </Link>
-        </div>
+    <div className="min-h-screen flex items-center justify-center px-6 bg-background text-foreground">
+      <div className="max-w-md text-center">
+        <div className="mono-label">404 · Not found</div>
+        <h1 className="mt-4 font-display text-5xl">This page is quiet.</h1>
+        <p className="mt-4 text-muted-foreground">
+          The page you were looking for isn&apos;t here — or it&apos;s still becoming.
+        </p>
+        <Link
+          href="/"
+          className="mt-8 inline-flex items-center gap-2 rounded-full bg-foreground text-primary-foreground px-5 py-2.5 text-sm"
+        >
+          Return home <span aria-hidden>→</span>
+        </Link>
       </div>
-      <Footer />
-    </>
+    </div>
   );
-};
-
+}

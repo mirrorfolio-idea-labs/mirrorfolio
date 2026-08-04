@@ -1,241 +1,271 @@
-@import "tailwindcss";
+@import "tailwindcss" source(none);
+@source "../";
+@import "tw-animate-css";
 
-@theme {
-  --color-border: hsl(var(--border));
-  --color-input: hsl(var(--input));
-  --color-ring: hsl(var(--ring));
-  --color-background: hsl(var(--background));
-  --color-foreground: hsl(var(--foreground));
+@custom-variant dark (&:is(.dark *));
 
-  --color-primary: hsl(var(--primary));
-  --color-primary-foreground: hsl(var(--primary-foreground));
+/*
+ * Mirrorfolio design system.
+ * ChainGPT Labs visual language: light engineered canvas, hairline grid,
+ * monospace typography, one saturated signal accent, zero radius.
+ * Sofi Health survives only in copy voice and motion pacing.
+ */
 
-  --color-secondary: hsl(var(--secondary));
-  --color-secondary-foreground: hsl(var(--secondary-foreground));
+@theme inline {
+  /* --font-jetbrains-mono is supplied by next/font/google in app/layout.tsx,
+     which self-hosts the same family/weights the old <link> pulled from
+     fonts.googleapis.com. The fallback stack is unchanged. */
+  --font-display: var(--font-jetbrains-mono), ui-monospace, "SFMono-Regular", monospace;
+  --font-sans: var(--font-jetbrains-mono), ui-monospace, "SFMono-Regular", monospace;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, "SFMono-Regular", monospace;
 
-  --color-destructive: hsl(var(--destructive));
-  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --radius-2xl: 0px;
+  --radius-3xl: 0px;
 
-  --color-muted: hsl(var(--muted));
-  --color-muted-foreground: hsl(var(--muted-foreground));
-
-  --color-accent: hsl(var(--accent));
-  --color-accent-foreground: hsl(var(--accent-foreground));
-
-  --color-popover: hsl(var(--popover));
-  --color-popover-foreground: hsl(var(--popover-foreground));
-
-  --color-card: hsl(var(--card));
-  --color-card-foreground: hsl(var(--card-foreground));
-
-  --color-void: hsl(var(--void));
-  --color-carbon: hsl(var(--carbon));
-  --color-ink: hsl(var(--ink));
-  --color-stone: hsl(var(--stone));
-  --color-ash: hsl(var(--ash));
-  --color-dust: hsl(var(--dust));
-  --color-silk: hsl(var(--silk));
-  --color-paper: hsl(var(--paper));
-  --color-bone: hsl(var(--bone));
-  --color-ember: hsl(var(--ember));
-  --color-clay: hsl(var(--clay));
-  --color-moss: hsl(var(--moss));
-  --color-sage: hsl(var(--sage));
-
-  --font-serif: var(--font-lora), Georgia, serif;
-  --font-sans: var(--font-dm-sans), system-ui, -apple-system, sans-serif;
-  --font-sentence: var(--font-lora), Georgia, serif;
-  --font-statement: var(--font-dm-sans), system-ui, -apple-system, sans-serif;
-
-  --radius-lg: var(--radius);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-sm: calc(var(--radius) - 4px);
-
-  --animate-accordion-down: accordion-down 0.2s ease-out;
-  --animate-accordion-up: accordion-up 0.2s ease-out;
-  --animate-surface-emerge: surface-emerge 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  --animate-drift-in: drift-in 0.6s ease-out forwards;
-  --animate-fade-in: fade-in 0.6s ease-out forwards;
-
-  @keyframes accordion-down {
-    from { height: 0; }
-    to { height: var(--radix-accordion-content-height); }
-  }
-  @keyframes accordion-up {
-    from { height: var(--radix-accordion-content-height); }
-    to { height: 0; }
-  }
-  @keyframes surface-emerge {
-    0% { opacity: 0; transform: translateY(24px); }
-    100% { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes drift-in {
-    0% { opacity: 0; transform: translateY(12px); }
-    100% { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes fade-in {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-  }
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-signal: var(--signal);
+  --color-signal-foreground: var(--signal-foreground);
+  --color-ink: var(--ink);
+  --color-ink-foreground: var(--ink-foreground);
 }
 
-@layer base {
-  :root {
-    /* Atmospheric palette — from Void (2am) to Bone (11am) */
-    --void: 30 20% 3%;
-    --carbon: 30 12% 7%;
-    --ink: 24 8% 10%;
-    --stone: 28 8% 25%;
-    --ash: 28 6% 44%;
-    --dust: 25 5% 64%;
-    --silk: 36 25% 93%;
-    --paper: 34 22% 94%;
-    --bone: 36 30% 96%;
-    --ember: 16 76% 44%;
-    --clay: 16 75% 35%;
-    --moss: 120 13% 42%;
-    --sage: 120 12% 61%;
+/* Light engineered canvas is the primary surface. */
+:root {
+  --radius: 0rem;
 
-    /* Semantic mapping */
-    --background: var(--bone);
-    --foreground: var(--ink);
+  --background: oklch(0.962 0.0025 80);      /* near-white, faintly warm paper */
+  --foreground: oklch(0.18 0.004 60);        /* near-black ink */
 
-    --card: 0 0% 100%;
-    --card-foreground: var(--ink);
+  --card: oklch(0.985 0.002 80);
+  --card-foreground: oklch(0.18 0.004 60);
+  --popover: oklch(0.985 0.002 80);
+  --popover-foreground: oklch(0.18 0.004 60);
 
-    --popover: var(--bone);
-    --popover-foreground: var(--ink);
+  --primary: oklch(0.18 0.004 60);
+  --primary-foreground: oklch(0.975 0.002 80);
 
-    --primary: var(--ember);
-    --primary-foreground: 0 0% 100%;
+  --secondary: oklch(0.93 0.003 80);
+  --secondary-foreground: oklch(0.18 0.004 60);
 
-    --secondary: var(--silk);
-    --secondary-foreground: var(--ink);
+  --muted: oklch(0.93 0.003 80);
+  --muted-foreground: oklch(0.47 0.006 65);
 
-    --muted: var(--paper);
-    --muted-foreground: var(--ash);
+  --accent: oklch(0.92 0.004 80);
+  --accent-foreground: oklch(0.18 0.004 60);
 
-    --accent: var(--silk);
-    --accent-foreground: var(--ink);
+  --destructive: oklch(0.56 0.20 27);
+  --destructive-foreground: oklch(0.98 0.003 80);
 
-    --destructive: 0 72% 51%;
-    --destructive-foreground: 0 0% 100%;
+  --border: oklch(0.18 0.004 60 / 14%);
+  --input: oklch(0.18 0.004 60 / 20%);
+  --ring: oklch(0.66 0.19 45);
 
-    --border: 30 15% 88%;
-    --input: 30 15% 88%;
-    --ring: var(--ember);
+  /* The single saturated accent. Fills and marks only, never small body text. */
+  --signal: oklch(0.66 0.19 45);
+  --signal-foreground: oklch(0.16 0.02 45);
 
-    --radius: 0.75rem;
-  }
+  /* Inverse tile — black punctuation cells. */
+  --ink: oklch(0.145 0.004 60);
+  --ink-foreground: oklch(0.965 0.002 80);
+
+  /* Grid metrics */
+  --rule: oklch(0.18 0.004 60 / 12%);
+  --cell: 1px;
 }
 
 @layer base {
   * {
-    @apply border-border;
+    border-color: var(--color-border);
   }
-
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
   body {
-    @apply bg-background text-foreground antialiased;
-    font-family: var(--font-dm-sans), system-ui, -apple-system, sans-serif;
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-mono);
+    font-variant-ligatures: none;
   }
-
-  h1, h2, h3, h4 {
-    font-family: var(--font-lora), Georgia, serif;
-  }
-
-  ::-webkit-scrollbar {
-    width: 6px;
-  }
-  ::-webkit-scrollbar-track {
-    background: hsl(var(--paper));
-  }
-  ::-webkit-scrollbar-thumb {
-    background: hsl(var(--dust));
-    border-radius: 3px;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-    }
-    .ghost-text {
-      display: none !important;
-    }
+  ::selection {
+    background: var(--signal);
+    color: var(--signal-foreground);
   }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-
-  .font-sentence {
-    font-family: var(--font-lora), Georgia, serif;
-    font-style: italic;
-    font-weight: 400;
-  }
-
-  .font-statement {
-    font-family: var(--font-dm-sans), system-ui, -apple-system, sans-serif;
-  }
-
-  .font-statement-medium {
-    font-family: var(--font-dm-sans), system-ui, -apple-system, sans-serif;
-    font-weight: 500;
-  }
-
-  .warm-card {
-    background: hsl(0 0% 100%);
-    border: 1px solid hsl(var(--border));
-    border-radius: 1rem;
-    box-shadow: 0 4px 24px -4px hsl(var(--ink) / 0.06);
-  }
-
-  .bg-warm-gradient {
-    background: linear-gradient(180deg, hsl(var(--bone)) 0%, hsl(var(--silk)) 50%, hsl(var(--bone)) 100%);
-  }
-
-  .bg-warm-cream {
-    background: hsl(var(--silk));
-  }
-
-  .bg-void {
-    background: hsl(var(--void));
-  }
-
-  .bg-paper {
-    background: hsl(var(--paper));
-  }
-
-  .bg-bone {
-    background: hsl(var(--bone));
-  }
-
-  .ghost-text {
-    opacity: 0.08;
+/* Grain: barely-there paper tooth. */
+@utility grain {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
     pointer-events: none;
-    user-select: none;
-    animation: ghost-pulse 4s ease-in-out infinite;
+    opacity: 0.03;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.9'/></svg>");
   }
+}
 
-  .divider-warm {
-    height: 1px;
-    background: hsl(var(--border));
+/* Persistent hairline column rules drawn across a section. */
+@utility grid-canvas {
+  background-image:
+    linear-gradient(to right, var(--rule) 1px, transparent 1px);
+  background-size: calc(100% / 4) 100%;
+  background-position: 0 0;
+}
+
+@utility grid-canvas-3 {
+  background-image:
+    linear-gradient(to right, var(--rule) 1px, transparent 1px);
+  background-size: calc(100% / 3) 100%;
+}
+
+/* Fine measurement mesh — used behind hero objects. */
+@utility grid-mesh {
+  background-image:
+    linear-gradient(to right, var(--rule) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--rule) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+/* Bordered grid cell. */
+@utility cell {
+  border-right: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Corner brackets on a tile. */
+@utility brackets {
+  position: relative;
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-color: currentColor;
+    opacity: 0.55;
   }
-
-  @keyframes ghost-pulse {
-    0%, 100% { opacity: 0.06; }
-    50% { opacity: 0.10; }
+  &::before {
+    top: 10px;
+    left: 10px;
+    border-top: 1px solid;
+    border-left: 1px solid;
   }
-
-  @keyframes gentle-float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-6px); }
+  &::after {
+    bottom: 10px;
+    right: 10px;
+    border-bottom: 1px solid;
+    border-right: 1px solid;
   }
+}
 
-  .animate-gentle-float {
-    animation: gentle-float 4s ease-in-out infinite;
+/* Clipped-corner primary action, ChainGPT button silhouette. */
+@utility clip-corner {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
+}
+
+/* Small signal square marking a grid intersection. */
+@utility tick {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    width: 6px;
+    height: 6px;
+    background: var(--signal);
+  }
+}
+
+/* Mono label — technical stamp. */
+@utility mono-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted-foreground);
+}
+
+/* Display type — tracked-out mono caps. */
+@utility display-caps {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  font-weight: 500;
+  line-height: 0.92;
+}
+
+/* Reveal — slow, calm, Sofi-paced. */
+@utility reveal {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: mf-reveal 1100ms cubic-bezier(0.16, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes mf-reveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hairline rules drawing themselves in. */
+@keyframes mf-draw-x {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+@utility draw-x {
+  transform-origin: left center;
+  animation: mf-draw-x 1400ms cubic-bezier(0.16, 0.8, 0.2, 1) forwards;
+}
+
+/* Quiet pulse for the live-signal dot. */
+@keyframes mf-pulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.25; }
+}
+@utility signal-pulse {
+  animation: mf-pulse 3.2s ease-in-out infinite;
+}
+
+/* Ticker marquee for the partner rail. */
+@keyframes mf-marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@utility marquee {
+  animation: mf-marquee 48s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
   }
 }
