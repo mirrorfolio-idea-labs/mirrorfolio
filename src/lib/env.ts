@@ -1,17 +1,37 @@
+import { tmpdir } from "node:os";
+import { join } from "node:path";
+
 import { z } from "zod";
+
+/** Set by Vercel during both build and runtime; never set on a dev machine. */
+const onVercel = Boolean(process.env.VERCEL);
+
+/**
+ * Serverless bundles are read-only apart from the OS temp dir, so on Vercel the
+ * dead-letter sink has to live under /tmp — `.data/` next to the bundle throws
+ * ENOENT. /tmp is wiped between cold starts, which is acceptable: it only ever
+ * holds leads Mongo already refused, and the route logs those as well.
+ */
+const DEFAULT_DEAD_LETTER_FILE = onVercel
+  ? join(tmpdir(), "mirrorfolio-leads-dead-letter.jsonl")
+  : ".data/leads-dead-letter.jsonl";
 
 /**
  * Server-side configuration.
  *
- * MongoDB is the system of record for leads. The default URI points at a local
- * mongod so the site runs on a dev machine with no setup; production sets
- * MONGODB_URI to the Atlas connection string.
+ * MongoDB is the system of record for leads. On a dev machine the URI defaults
+ * to a local mongod so the site runs with no setup. On Vercel there is no such
+ * fallback: a missing MONGODB_URI fails loudly instead of quietly pointing
+ * production at 127.0.0.1, which is how a misspelled variable name in the
+ * project settings turned into silently refused connections.
  *
  * Everything else is optional, but anything that *is* set has to be well-formed
  * — a typo'd URI should fail loudly on boot rather than silently drop a lead.
  */
 const serverEnvSchema = z.object({
-  MONGODB_URI: z.string().min(1).default("mongodb://127.0.0.1:27017"),
+  MONGODB_URI: onVercel
+    ? z.string().min(1)
+    : z.string().min(1).default("mongodb://127.0.0.1:27017"),
   MONGODB_DB: z.string().min(1).default("mirrorfolio"),
   MONGODB_LEADS_COLLECTION: z.string().min(1).default("leads"),
 
@@ -19,7 +39,7 @@ const serverEnvSchema = z.object({
    * Dead-letter sink. If the Mongo write fails, the lead is appended here so it
    * is never lost. Relative paths resolve from the project root.
    */
-  LEADS_DEAD_LETTER_FILE: z.string().min(1).default(".data/leads-dead-letter.jsonl"),
+  LEADS_DEAD_LETTER_FILE: z.string().min(1).default(DEFAULT_DEAD_LETTER_FILE),
 
   /**
    * SMTP notification (optional). Host, user, password and a recipient must all

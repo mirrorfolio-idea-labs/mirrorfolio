@@ -72,9 +72,26 @@ export async function POST(request: Request) {
   try {
     outcome = await saveLead(stored);
   } catch (error) {
-    // Both Mongo and the dead-letter file failed — the lead is genuinely lost,
-    // so tell the visitor rather than pretending it landed.
+    // Both Mongo and the dead-letter file failed, so this submission exists
+    // nowhere else. Log the payload itself as the sink of last resort — the
+    // platform's log retention is the only thing left holding it — then tell
+    // the visitor rather than pretending it landed.
     console.error("[leads] could not persist lead:", error);
+    // Listed field by field rather than spread, so anything later added to
+    // StoredLead has to be opted in here instead of quietly landing in the
+    // logs. The request context (user agent, referer) is deliberately absent:
+    // it is diagnostic, and would add personal data without making the lead any
+    // easier to follow up by hand.
+    console.error(
+      "[leads] unpersisted lead payload:",
+      JSON.stringify({
+        intent: stored.intent,
+        name: stored.name,
+        email: stored.email,
+        details: stored.details,
+        receivedAt: stored.receivedAt,
+      }),
+    );
     return NextResponse.json(
       {
         ok: false,
