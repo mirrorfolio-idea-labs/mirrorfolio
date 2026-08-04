@@ -1,4 +1,4 @@
-import { Resend } from "resend";
+import nodemailer, { type Transporter } from "nodemailer";
 
 import { canNotifyByEmail, serverEnv } from "@/lib/env";
 import type { StoredLead } from "./schema";
@@ -11,7 +11,30 @@ const INTENT_LABELS: Record<string, string> = {
   hello: "From the stall",
 };
 
-let resend: Resend | undefined;
+/**
+ * Next hot-reloads modules and serverless platforms reuse warm instances, so the
+ * transport is cached on globalThis — otherwise every request opens a new SMTP
+ * connection pool and the provider starts refusing them.
+ */
+const globalForMail = globalThis as typeof globalThis & {
+  __mirrorfolioMailer?: Transporter;
+};
+
+function transport(): Transporter {
+  const env = serverEnv();
+  globalForMail.__mirrorfolioMailer ??= nodemailer.createTransport({
+    host: env.SMTP_HOST,
+    port: env.SMTP_PORT,
+    // Implicit TLS on 465; 587 connects plain and upgrades via STARTTLS.
+    secure: env.SMTP_SECURE,
+    auth: { user: env.SMTP_USER, pass: env.SMTP_PASSWORD },
+    // A hung mail server must not hold a form submission open.
+    connectionTimeout: 8_000,
+    greetingTimeout: 8_000,
+    socketTimeout: 10_000,
+  });
+  return globalForMail.__mirrorfolioMailer;
+}
 
 /**
  * Email the inbox when a lead lands. Best-effort by design: notification failure
@@ -21,8 +44,6 @@ export async function notifyNewLead(lead: StoredLead): Promise<void> {
   if (!canNotifyByEmail()) return;
 
   const env = serverEnv();
-  resend ??= new Resend(env.RESEND_API_KEY);
-
   const label = INTENT_LABELS[lead.intent] ?? lead.intent;
   const detailLines = Object.entries(lead.details)
     .map(([key, value]) => `${key}: ${value}`)
@@ -41,14 +62,18 @@ export async function notifyNewLead(lead: StoredLead): Promise<void> {
     .join("\n");
 
   try {
-    await resend.emails.send({
-      from: env.LEAD_NOTIFY_FROM,
-      to: env.LEAD_NOTIFY_TO!,
+    await transport().sendMail({
+      from: env.SMTP_FROM,
+      to: env.LEAD_NOTIFY_TO,
+      // Replying to the alert goes straight back to the person who wrote in.
       replyTo: lead.email,
       subject: `Mirrorfolio — ${label} — ${lead.name}`,
       text,
     });
   } catch (error) {
+    // Drop the transport so the next lead reconnects rather than reusing a
+    // socket the server may already have closed.
+    globalForMail.__mirrorfolioMailer = undefined;
     console.error("[leads] notification email failed:", error);
   }
 }

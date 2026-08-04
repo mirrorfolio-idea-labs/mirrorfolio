@@ -45,3 +45,6 @@ agentdb.rvf.lock
 *.njsproj
 *.sln
 *.sw?
+
+# Vercel CLI project link
+.vercel
