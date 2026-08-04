@@ -4,7 +4,21 @@ import { useEffect, useRef, useState } from "react";
 
 const EMAIL = "kabeer@mirrorfolio.com";
 
-const ROLES = ["Investor", "Hospital or clinician", "Family member", "Founder or partner", "Other"];
+/**
+ * One question instead of two. For almost everyone who scans this card, who
+ * they are and why they are writing are the same answer — asking twice adds
+ * friction without adding signal.
+ */
+const REASONS = [
+  "Investment",
+  "Hospital or clinical pilot",
+  "Doctor or clinician",
+  "Someone in my family",
+  "Research or academia",
+  "Partnership or manufacturing",
+  "Press or media",
+  "Curious, no agenda",
+];
 
 type State = "idle" | "sending" | "sent" | "failed";
 
@@ -24,8 +38,8 @@ export function HelloForm({ source }: { source: string }) {
     const data = Object.fromEntries(new FormData(form).entries()) as Record<string, string>;
     setState("sending");
 
-    const body = `Name: ${data.name ?? ""}\nEmail: ${data.email ?? ""}\nOrganisation: ${data.organisation ?? ""}\nRole: ${data.role ?? ""}\nSource: ${data.s ?? source}\n\n${data.message ?? ""}`;
-    const fallback = `mailto:${EMAIL}?subject=${encodeURIComponent("Mirrorfolio — from the stall")}&body=${encodeURIComponent(body)}`;
+    const body = `Name: ${data.name ?? ""}\nEmail: ${data.email ?? ""}\nOrganisation: ${data.organisation ?? ""}\nAbout: ${data.role ?? ""}\nSource: ${data.s ?? source}\n\n${data.message ?? ""}`;
+    const fallback = `mailto:${EMAIL}?subject=${encodeURIComponent("Mirrorfolio — leaving my details")}&body=${encodeURIComponent(body)}`;
 
     try {
       const res = await fetch("/api/leads", {
@@ -51,8 +65,11 @@ export function HelloForm({ source }: { source: string }) {
   if (state === "sent") {
     return (
       <div className="h-done">
-        Got it — thank you. Kabeer will write to you within two working days, from {EMAIL}. Nothing
-        else, ever.
+        <p>
+          Thank you — this is with Kabeer now. He will write to you within two working days, from{" "}
+          {EMAIL}.
+        </p>
+        <p>No newsletter, no list, no sharing your details. Nothing else, ever.</p>
       </div>
     );
   }
@@ -71,30 +88,45 @@ export function HelloForm({ source }: { source: string }) {
           defaultValue=""
         />
       </div>
+
       <label htmlFor="hn">Your name</label>
       <input id="hn" name="name" required autoComplete="name" />
-      <label htmlFor="he">Email we should reply to</label>
+
+      <label htmlFor="he">Email</label>
       <input id="he" name="email" type="email" required autoComplete="email" />
-      <label htmlFor="ho">Company or hospital (optional)</label>
-      <input id="ho" name="organisation" autoComplete="organization" />
-      <label htmlFor="hr">You are…</label>
+
+      <label htmlFor="hr">
+        What brings you here?
+        <span className="h-hint">So the reply is about the right thing.</span>
+      </label>
       <select id="hr" name="role" defaultValue="">
         <option value="" disabled>
           Select one
         </option>
-        {ROLES.map((r) => (
+        {REASONS.map((r) => (
           <option key={r} value={r}>
             {r}
           </option>
         ))}
       </select>
-      <label htmlFor="hm">Anything you&apos;d like us to know (optional)</label>
+
+      <label htmlFor="ho">
+        Organisation
+        <span className="h-hint">Optional — company, hospital, fund or university.</span>
+      </label>
+      <input id="ho" name="organisation" autoComplete="organization" />
+
+      <label htmlFor="hm">
+        Anything you&apos;d like us to know
+        <span className="h-hint">Optional — a question, a context, a next step.</span>
+      </label>
       <textarea id="hm" name="message" rows={3} />
+
       <button type="submit" disabled={state === "sending"}>
-        {state === "sending" ? "Sending…" : "Send my details"}
+        {state === "sending" ? "Sending…" : "Send this to Kabeer"}
       </button>
       <p className="h-note">
-        We reply within two working days. No newsletter, no sharing your details.
+        A person replies within two working days. No newsletter, no sharing your details.
       </p>
       {state === "failed" && (
         <p className="h-note">
