@@ -63,8 +63,9 @@ only.
 - **Spam guards** — a `company_website` honeypot and a minimum time-on-form.
   Both respond exactly like the success path, so a bot learns nothing.
 - **Rate limiting** — fixed window per IP, 429 with `Retry-After` past the limit.
-- **Notification** — optional Resend email on each lead; a mail failure never
-  fails the request.
+- **Notification** — optional SMTP email on each lead, with `Reply-To` set to the
+  sender so replying goes straight back to them; a mail failure never fails the
+  request.
 
 ### Configuration
 
@@ -78,11 +79,21 @@ request rather than silently dropping leads. Schema: `src/lib/env.ts`.
 | `MONGODB_DB`               | `mirrorfolio`                          | Database name                            |
 | `MONGODB_LEADS_COLLECTION` | `leads`                                | Collection name                          |
 | `LEADS_DEAD_LETTER_FILE`   | `.data/leads-dead-letter.jsonl`        | Fallback sink; holds personal data       |
-| `RESEND_API_KEY`           | _unset_                                | With `LEAD_NOTIFY_TO`, enables email     |
+| `SMTP_HOST`                | _unset_                                | e.g. `smtp.gmail.com`; enables email     |
+| `SMTP_PORT`                | `587`                                  | `587` for STARTTLS, `465` for TLS        |
+| `SMTP_SECURE`              | `false`                                | `true` only on port 465                  |
+| `SMTP_USER`                | _unset_                                | SMTP username                            |
+| `SMTP_PASSWORD`            | _unset_                                | SMTP password / app password             |
+| `SMTP_FROM`                | `Mirrorfolio <noreply@mirrorfolio.com>`| Sender for lead alerts                   |
 | `LEAD_NOTIFY_TO`           | _unset_                                | Where lead alerts are sent               |
-| `LEAD_NOTIFY_FROM`         | `Mirrorfolio <onboarding@resend.dev>`  | Sender for lead alerts                   |
 | `LEAD_RATE_LIMIT`          | `5`                                    | Requests per window, per IP              |
 | `LEAD_RATE_WINDOW_MS`      | `60000`                                | Window length in milliseconds            |
+
+Mail is attempted only when `SMTP_HOST`, `SMTP_USER`, `SMTP_PASSWORD` and
+`LEAD_NOTIFY_TO` are all set; otherwise notification is skipped silently and the
+lead is still stored. With Gmail, `SMTP_PASSWORD` must be an
+[App Password](https://support.google.com/accounts/answer/185833), not the
+account password, and `SMTP_FROM` must be an address the account may send as.
 
 The rate limiter is in-process, which is correct for a single instance. Behind
 more than one instance it becomes per-instance and should move to a shared

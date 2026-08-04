@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { after, NextResponse } from "next/server";
 
 import { notifyNewLead } from "@/lib/leads/notify";
 import { check, clientIp } from "@/lib/leads/rate-limit";
@@ -84,8 +84,10 @@ export async function POST(request: Request) {
     );
   }
 
-  // Persisted — notify out of band. A mail failure must not fail the request.
-  await notifyNewLead(stored);
+  // Persisted, so the visitor is done waiting. `after` runs the SMTP send once
+  // the response has been flushed but keeps the serverless function alive until
+  // it settles — awaiting it here made the form hang ~13s on a cold connection.
+  after(() => notifyNewLead(stored));
 
   return NextResponse.json({ ok: true, degraded: outcome.sink !== "mongodb" }, { status: 201 });
 }

@@ -21,10 +21,24 @@ const serverEnvSchema = z.object({
    */
   LEADS_DEAD_LETTER_FILE: z.string().min(1).default(".data/leads-dead-letter.jsonl"),
 
-  // Email notification (optional). Both must be set for mail to be sent.
-  RESEND_API_KEY: z.string().min(1).optional(),
+  /**
+   * SMTP notification (optional). Host, user, password and a recipient must all
+   * be present before any mail is attempted — see `canNotifyByEmail`.
+   *
+   * SMTP_SECURE is implicit TLS on connect (port 465). Port 587 upgrades via
+   * STARTTLS instead and must leave this false, which is the common setup.
+   */
+  SMTP_HOST: z.string().min(1).optional(),
+  SMTP_PORT: z.coerce.number().int().positive().max(65535).default(587),
+  SMTP_SECURE: z
+    .enum(["true", "false"])
+    .default("false")
+    .transform((value) => value === "true"),
+  SMTP_USER: z.string().min(1).optional(),
+  SMTP_PASSWORD: z.string().min(1).optional(),
+  SMTP_FROM: z.string().min(1).default("Mirrorfolio <noreply@mirrorfolio.com>"),
+
   LEAD_NOTIFY_TO: z.string().email().optional(),
-  LEAD_NOTIFY_FROM: z.string().min(1).default("Mirrorfolio <onboarding@resend.dev>"),
 
   // Requests per window, per IP, against POST /api/leads.
   LEAD_RATE_LIMIT: z.coerce.number().int().positive().default(5),
@@ -51,5 +65,5 @@ export function serverEnv(): ServerEnv {
 /** True when a lead notification email can actually be sent. */
 export function canNotifyByEmail(): boolean {
   const env = serverEnv();
-  return Boolean(env.RESEND_API_KEY && env.LEAD_NOTIFY_TO);
+  return Boolean(env.SMTP_HOST && env.SMTP_USER && env.SMTP_PASSWORD && env.LEAD_NOTIFY_TO);
 }
