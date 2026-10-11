@@ -3,6 +3,8 @@ import Image from "next/image";
 
 import starterKit from "@/assets/gen8-starter-kit.jpg";
 
+import { LogoMark, LogoWordmark } from "@/components/site/Logo";
+
 import { HELLO_CSS } from "./hello.css";
 import { HelloNav } from "./HelloNav";
 import { HelloForm } from "./HelloForm";
@@ -291,7 +293,10 @@ export default async function HelloPage({
       <div className="h-wrap">
         {/* The hook. Everything below only elaborates on this. */}
         <header>
-          <p className="h-mark">Mirrorfolio</p>
+          <div className="h-mark" role="img" aria-label="Mirrorfolio">
+            <LogoMark className="h-mark-sym" />
+            <LogoWordmark className="h-mark-word" />
+          </div>
           <h1 className="h-h1">Post-discharge recovery monitoring for people over 65.</h1>
           <p className="h-sub">No cameras. No wearables. No effort from the patient.</p>
           <p className="h-lead">

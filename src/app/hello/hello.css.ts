@@ -18,7 +18,9 @@ font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
 .h-page select:focus-visible,.h-page textarea:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
 
 /* Masthead — the whole pitch, before anyone scrolls. */
-.h-mark{font-size:17px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;margin:0 0 26px}
+.h-mark{display:flex;align-items:center;gap:12px;margin:0 0 26px;color:var(--ink)}
+.h-mark-sym{width:30px;height:30px;flex:none}
+.h-mark-word{height:16px;width:auto}
 .h-h1{font-size:32px;line-height:1.1;letter-spacing:-.02em;font-weight:600;margin:0 0 10px;text-wrap:balance}
 .h-sub{font-size:17px;font-weight:600;margin:0 0 18px;text-wrap:pretty}
 .h-lead{font-size:17px;color:var(--dim);margin:0 0 12px;text-wrap:pretty}
