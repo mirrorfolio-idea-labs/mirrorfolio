@@ -20,7 +20,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  authors: [{ name: "Mirrorfolio Labs" }],
+  authors: [{ name: "Mirrorfolio Idea Labs" }],
   openGraph: {
     siteName: "Mirrorfolio",
   },
@@ -39,7 +39,7 @@ const organizationLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "Mirrorfolio",
-  description: "Ambient care intelligence for older adults — edge AI, no cameras, no wearables.",
+  description: "Post-discharge recovery monitoring for people over 65 — no cameras, no wearables, no effort from the patient.",
   url: "/",
 };
 

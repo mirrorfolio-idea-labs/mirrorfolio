@@ -8,7 +8,7 @@ import { pageMetadata } from "@/lib/metadata";
 
 const title = "Company — Mirrorfolio";
 const description =
-  "Mirrorfolio Idea Labs builds Ambient Care Intelligence from Kerala, India — 350+ family conversations, 30+ real-home validations, Gen 8 hardware.";
+  "Mirrorfolio Idea Labs builds post-discharge recovery monitoring from Kerala, India — 350+ family conversations, 30+ real-home deployments, 8 hardware generations built.";
 
 export const metadata: Metadata = pageMetadata({
   title,
@@ -25,16 +25,20 @@ const beliefs = [
 
 const timeline = [
   {
-    k: "2023",
+    k: "2024",
     t: "Listening",
-    b: "Conversations with families across India about what actually goes wrong.",
+    b: "Home visits and conversations with families across India about what actually goes wrong.",
   },
   {
-    k: "2024—25",
+    k: "2025—26",
     t: "Iterating",
-    b: "Nine hardware generations, tested in real homes, not showrooms.",
+    b: "Eight hardware generations built and tested in real homes, not showrooms. A ninth, with contactless physiological sensing, is in development.",
   },
-  { k: "2026", t: "Deploying", b: "First hospital partnerships and pilot households." },
+  {
+    k: "Now",
+    t: "Proving",
+    b: "Supervised validation in gated pilot waves of 50 households, with hospital chains in Kerala in discussion.",
+  },
 ];
 
 export default function Page() {
@@ -50,7 +54,7 @@ export default function Page() {
             <span className="text-muted-foreground">listening to families.</span>
           </>
         }
-        lede="Mirrorfolio Idea Labs is building Ambient Care Intelligence from Kerala, India — for the millions of households where care happens quietly, at home, without help."
+        lede="Mirrorfolio Idea Labs is building post-discharge recovery monitoring for people over 65, from Kerala, India — for the millions of households where care happens quietly, at home, without help."
         action={
           <>
             <WaitlistCta />
@@ -71,7 +75,7 @@ export default function Page() {
               <span className="text-muted-foreground">is unobserved.</span>
             </>
           }
-          body="Hospitals see hours. Families live the weeks in between. We're building the layer that connects them — without cameras, wearables or anything an older adult has to remember."
+          body="Hospitals see hours. Families live the weeks in between. We're building the way families and clinicians see that recovery — without cameras, wearables or anything an older adult has to remember."
         />
       </section>
 

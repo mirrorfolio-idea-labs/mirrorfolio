@@ -23,7 +23,7 @@ export function ForHospitals() {
             </span>
           </>
         }
-        body="Mirrorfolio extends clinical visibility into the home, giving discharge coordinators objective data on how recovery is actually going. Not another monitoring dashboard — a behavioural intelligence layer that fits the workflow you already have."
+        body="Mirrorfolio extends clinical visibility into the home, giving discharge coordinators objective data on how recovery is actually going. Not another monitoring dashboard — contactless recovery monitoring that fits the workflow you already have."
       />
       <CellGrid items={value} />
       <div className="border-t border-border p-5 md:p-8">

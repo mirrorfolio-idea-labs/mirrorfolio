@@ -8,7 +8,7 @@ import { pageMetadata } from "@/lib/metadata";
 
 const title = "For Families — Mirrorfolio";
 const description =
-  "Know your parent is okay without asking, without cameras, and without turning their home into surveillance. Mirrorfolio watches routine, not people.";
+  "Know your parent is okay without asking, without cameras, and without turning their home into surveillance. Mirrorfolio reads routine and vital signs, not people.";
 
 export const metadata: Metadata = pageMetadata({
   title,
@@ -48,7 +48,7 @@ const help = [
   {
     k: "Notices",
     t: "When it changes",
-    b: "Medication delayed. Walking reduced. Rest disrupted.",
+    b: "Medication delayed. Walking reduced. Rest and breathing disrupted.",
   },
   {
     k: "Tells you",
@@ -140,7 +140,7 @@ export default function Page() {
               <span className="text-ink-foreground/50">No exceptions.</span>
             </>
           }
-          body="Everything is processed inside the home, on the device itself. There is no video and no audio to leak, because none is ever captured. What leaves the home is a human-meaningful state — and only when your family chooses to share it."
+          body="Everything is processed inside the home, on the device itself. There is no audio or video to leak, because none is ever captured. What leaves the home is a human-meaningful state — and only when your family chooses to share it."
         />
       </section>
 

@@ -14,7 +14,7 @@ export function Reality() {
       <HeadlineRow
         headline={
           <>
-            Every solution asks
+            Most solutions ask
             <br />
             <span className="text-muted-foreground">
               the patient to do
@@ -23,7 +23,7 @@ export function Reality() {
             </span>
           </>
         }
-        body="Wear it. Charge it. Open the app. Report your symptoms. Those assumptions fail in real homes — especially for older adults recovering from illness. The devices that get adopted are the ones that disappear into the routine already there."
+        body="Wear it. Charge it. Open the app. Accept a camera in the room. For an older adult, that effort wears thin and the monitoring is slowly abandoned. We think understanding recovery is the caretaker's job, not the patient's, so Mirrorfolio asks nothing of them."
       />
       <CellGrid items={assumptions} />
     </section>

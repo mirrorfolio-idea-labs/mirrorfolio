@@ -21,8 +21,8 @@ export function CTA() {
             <span className="text-muted-foreground">home.</span>
           </h2>
           <p className="mt-8 max-w-[50ch] text-sm leading-relaxed text-muted-foreground md:text-base">
-            First deployments start in 2026 with hospital partners and pilot
-            families. Leave your details and we&apos;ll write to you when Mirrorfolio
+            Our first pilot wave is gated at 50 households in Kerala, and
+            hospitals refer at discharge. Leave your details and we&apos;ll write to you when Mirrorfolio
             reaches your area — nothing else.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
@@ -56,6 +56,12 @@ export function CTA() {
             <p className="mt-3 text-sm leading-relaxed text-ink-foreground/75">
               Families, hospitals and partners. Usually within two days.
             </p>
+            <a
+              href="mailto:kabeer@mirrorfolio.com"
+              className="mono-label mt-4 block text-ink-foreground/80 transition-colors hover:text-ink-foreground"
+            >
+              Routed to kabeer@mirrorfolio.com
+            </a>
           </div>
         </div>
       </div>

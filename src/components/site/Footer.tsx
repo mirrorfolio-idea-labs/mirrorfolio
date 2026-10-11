@@ -62,8 +62,8 @@ export function Footer() {
             <span className="text-ink-foreground/50">proactive and invisible.</span>
           </div>
           <p className="mt-6 max-w-[42ch] text-xs leading-relaxed text-ink-foreground/70">
-            Mirrorfolio is an Ambient Care Intelligence platform. We make recovery visible between
-            hospital and home.
+            Mirrorfolio monitors recovery at home after hospital discharge, for people over 65. We
+            make recovery visible between hospital and home.
           </p>
         </div>
 

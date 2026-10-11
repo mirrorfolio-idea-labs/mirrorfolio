@@ -5,7 +5,7 @@ import { validationMetrics } from "./proof";
 export function Validation() {
   return (
     <section className="border-b border-border">
-      <SectionRail index="08" label="Built from real homes" note="India · 2023—2026" />
+      <SectionRail index="08" label="Built from real homes" note="India · 2024—2026" />
 
       <div className="grid md:grid-cols-4">
         <div className="border-b border-border p-5 md:col-span-2 md:border-b-0 md:border-r md:p-8">

@@ -15,9 +15,9 @@ import { jsonLd } from "@/lib/json-ld";
 import { pageMetadata } from "@/lib/metadata";
 import { siteUrl } from "@/lib/site";
 
-const title = "Mirrorfolio — Ambient Care Intelligence";
+const title = "Mirrorfolio — Post-discharge recovery monitoring";
 const description =
-  "Mirrorfolio learns the rhythms of daily life — medication, movement, rest — and notices when they change. No cameras. No wearables. Nothing to charge.";
+  "Post-discharge recovery monitoring for people over 65. Mirrorfolio reads vital signs and daily routine from across the room and notices when they change. No cameras. No wearables. No effort from the patient.";
 
 export const metadata: Metadata = pageMetadata({ title, description, path: "/" });
 

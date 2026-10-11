@@ -9,7 +9,7 @@ import { pageMetadata } from "@/lib/metadata";
 
 const title = "Platform — Mirrorfolio";
 const description =
-  "Routine Stability Intelligence: how Mirrorfolio forms a behavioural baseline, detects drift, and turns it into one calm signal for families and clinicians.";
+  "Routine Stability Intelligence: how Mirrorfolio forms a personal baseline from physiology and routine, detects drift, and turns it into one calm signal for families and clinicians.";
 
 export const metadata: Metadata = pageMetadata({
   title,
@@ -27,7 +27,7 @@ const drift = [
   { k: "01", t: "Breakfast skipped", b: "A morning that starts later, then later again." },
   { k: "02", t: "Medication delayed", b: "Timing loosens before it stops." },
   { k: "03", t: "Walking reduced", b: "Fewer room transitions, slower pace between them." },
-  { k: "04", t: "Hydration falling", b: "Kitchen interactions thin out across the day." },
+  { k: "04", t: "Breathing at rest changing", b: "A sustained shift from their own usual, across days. Needs the Gen 9 room sensor." },
 ];
 
 const view = [
@@ -50,7 +50,7 @@ export default function Page() {
             <span className="text-muted-foreground">Intelligence.</span>
           </>
         }
-        lede="Health rarely changes suddenly. Routine shifts first. Mirrorfolio learns what normal looks like for one person, then notices when it drifts."
+        lede="Recovery shows up in routine and physiology together. Mirrorfolio reads both, contactlessly, learns what normal looks like for one person, then notices when it drifts."
         action={
           <>
             <WaitlistCta />
@@ -77,7 +77,7 @@ export default function Page() {
               <span className="text-muted-foreground">Neither is a diagnosis.</span>
             </>
           }
-          body="Mirrorfolio doesn't diagnose and doesn't treat. It gives early visibility into behavioural change, so that the people who can act have time to act."
+          body="Mirrorfolio doesn't diagnose and doesn't treat. It gives early visibility into change, so that the people who can act have time to act."
         />
       </section>
 

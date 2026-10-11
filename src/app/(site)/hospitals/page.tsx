@@ -40,7 +40,7 @@ const clinical = [
     t: "Reduced 60-day readmissions",
     b: "Attention directed where recovery is drifting.",
   },
-  { k: "02", t: "Objective recovery data", b: "Behavioural trajectories between appointments." },
+  { k: "02", t: "Objective recovery data", b: "Physiology and routine trajectories between appointments." },
   {
     k: "03",
     t: "Early intervention triggers",
@@ -73,7 +73,7 @@ export default function Page() {
             <span className="text-muted-foreground">doesn&apos;t end at discharge.</span>
           </>
         }
-        lede="Mirrorfolio is a behavioural intelligence layer for the recovery period — the weeks after discharge when clinical visibility disappears and readmission risk peaks."
+        lede="Mirrorfolio monitors recovery at home for people over 65 — the weeks after discharge when clinical visibility disappears and readmission risk peaks. Contactless, with no cameras, no wearables and nothing for the patient to do."
         action={
           <>
             <HospitalCta primary />
@@ -97,7 +97,7 @@ export default function Page() {
               <span className="text-muted-foreground">A read on recovery.</span>
             </>
           }
-          body="Mirrorfolio reports routine stability, not raw signal. Care teams see whether recovery is holding, and where it is drifting — with the context to know which changes matter."
+          body="Mirrorfolio reports recovery stability, not raw signal. Care teams see whether recovery is holding, and where it is drifting — with the context to know which changes matter."
         />
         <CellGrid items={clinical} />
       </section>

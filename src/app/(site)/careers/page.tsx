@@ -9,7 +9,7 @@ import { siteUrl } from "@/lib/site";
 
 const title = "Careers — Mirrorfolio";
 const description =
-  "Build Ambient Care Intelligence with us. Embedded, on-device ML, industrial design and clinical partnership roles at Mirrorfolio Idea Labs.";
+  "Build post-discharge recovery monitoring with us. Embedded, on-device ML, industrial design and clinical partnership roles at Mirrorfolio Idea Labs.";
 
 export const metadata: Metadata = pageMetadata({
   title,

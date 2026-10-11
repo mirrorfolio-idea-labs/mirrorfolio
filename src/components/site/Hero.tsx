@@ -11,10 +11,10 @@ export function Hero() {
       <div className="grid grid-cols-2 border-b border-border md:grid-cols-4">
         <div className="mono-label flex items-center gap-2 border-r border-border px-5 py-3 md:px-8">
           <span className="inline-block h-1.5 w-1.5 bg-signal" />
-          Ambient Care Intelligence
+          Post-discharge recovery monitoring
         </div>
         <div className="mono-label hidden items-center border-r border-border px-5 py-3 md:flex md:px-8">
-          Pre-market · First deployments
+          Pre-market · Pilot wave of 50
         </div>
         <div className="mono-label hidden items-center border-r border-border px-5 py-3 md:flex md:px-8">
           Kerala, India
@@ -48,8 +48,9 @@ export function Hero() {
               className="reveal mt-7 max-w-[46ch] text-base leading-relaxed text-muted-foreground"
               style={{ animationDelay: "180ms" }}
             >
-              Mirrorfolio learns the rhythms of daily life at home — medication, movement, rest —
-              and tells you when they change. No cameras. No wearables. Nothing to charge.
+              Mirrorfolio reads vital signs and the rhythms of daily life from across the room —
+              breathing, movement, medication, rest — and tells you when they change. No cameras.
+              No wearables. Nothing for your parent to do.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-4">

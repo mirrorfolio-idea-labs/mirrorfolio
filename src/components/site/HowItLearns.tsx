@@ -5,7 +5,7 @@ const places = [
   { k: "Bedside", t: "Rest", b: "When the day begins and how the night went." },
   { k: "Cabinet", t: "Medication", b: "Presence and timing — never pill counting." },
   { k: "Kitchen", t: "Meals", b: "Whether a meal happened, not what was eaten." },
-  { k: "Hallway", t: "Movement", b: "Room transitions and the pace between them." },
+  { k: "Room", t: "Physiology", b: "Breathing and heart rhythm, from across the room. In development." },
 ];
 
 export function HowItLearns() {
@@ -14,7 +14,7 @@ export function HowItLearns() {
       <SectionRail
         index="04"
         label="How it learns"
-        note="On-device · Nothing recorded"
+        note="On the hub · No audio or video"
         invert
       />
       <HeadlineRow
@@ -26,7 +26,7 @@ export function HowItLearns() {
             <span className="text-ink-foreground/50">becomes the observer.</span>
           </>
         }
-        body="Small, quiet devices sit where life already happens — the bedside, the medicine cabinet, the kitchen — and sense movement, presence and interaction. No video, no sound: everything is processed on the device, nothing is recorded, and nothing leaves the home unless the family chooses to share it."
+        body="Small, quiet devices sit where life already happens — the bedside, the medicine cabinet, the kitchen — and sense movement, presence and interaction, and our next generation adds contactless sensing of breathing and heart rhythm. No audio or video, ever: the intelligence runs on the hub inside the home, and nothing leaves it unless the family chooses to share."
       />
       <CellGrid items={places} invert />
       <div className="border-t border-ink-foreground/15 p-5 md:p-8">

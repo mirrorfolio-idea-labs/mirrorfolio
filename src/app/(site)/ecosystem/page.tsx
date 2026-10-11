@@ -11,7 +11,7 @@ import { pageMetadata } from "@/lib/metadata";
 
 const title = "Ecosystem — Mirrorfolio";
 const description =
-  "The Mirrorfolio device family: the Home Hub — the brain of the system — and Pill Companion in development, with Nutrition Box, Vitals Planter and Presence Sensor ahead.";
+  "The Mirrorfolio device family: the Home Hub, Pill Companion and Nutrition Box as Gen 8 prototypes, with contactless physiological sensing in Gen 9 development.";
 
 export const metadata: Metadata = pageMetadata({
   title,
@@ -52,10 +52,10 @@ export default function Page() {
             <br />
             a different dimension
             <br />
-            <span className="text-muted-foreground">of daily life.</span>
+            <span className="text-muted-foreground">of recovery at home.</span>
           </>
         }
-        lede="Together they form a complete picture of routine. Two devices are being built now; the rest are on the way. First deployments start in 2026 with hospital partners."
+        lede="Together they form a complete picture of recovery. Three Gen 8 prototypes exist today, and Gen 9 adds contactless sensing of breathing and heart rhythm. Our first pilot wave is gated at 50 households."
         action={
           <>
             <WaitlistCta />
@@ -65,7 +65,7 @@ export default function Page() {
       />
 
       <section className="border-b border-border">
-        <SectionRail index="E.1" label="The device family" note="2 in development · 4 ahead" />
+        <SectionRail index="E.1" label="The device family" note="3 Gen 8 prototypes · Gen 9 in development" />
         <div className="grid md:grid-cols-2">
           {products.map((p, i) => (
             <article
@@ -118,7 +118,7 @@ export default function Page() {
               <span className="text-ink-foreground/50">One intelligence.</span>
             </>
           }
-          body="Each device contributes a behavioural signal. The Home Hub synthesises them into a single routine stability read. When several signals drift together, confidence rises. When one drifts alone, context decides."
+          body="Each device contributes a signal, from routine or from physiology. The Home Hub synthesises them into a single recovery stability read. When several signals drift together, confidence rises. When one drifts alone, context decides."
         />
       </section>
 

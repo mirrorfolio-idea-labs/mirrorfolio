@@ -6,7 +6,7 @@ import { pageMetadata } from "@/lib/metadata";
 
 const title = "Privacy — Mirrorfolio";
 const description =
-  "No cameras. No microphones. No recordings. How Mirrorfolio processes behavioural signals on-device and keeps families in control of what is shared.";
+  "No cameras. No microphones. No audio or video, ever. How Mirrorfolio processes signals on the hub inside the home and keeps families in control of what is shared.";
 
 export const metadata: Metadata = pageMetadata({
   title,
@@ -17,12 +17,12 @@ export const metadata: Metadata = pageMetadata({
 const never = [
   { k: "N.01", t: "No cameras", b: "No image sensor exists in any Mirrorfolio device." },
   { k: "N.02", t: "No microphones", b: "No speech is captured, stored or transmitted." },
-  { k: "N.03", t: "No recordings", b: "There is no footage to leak, subpoena or sell." },
+  { k: "N.03", t: "No audio or video, ever", b: "There is no footage to leak, subpoena or sell." },
   { k: "N.04", t: "No data sale", b: "Household data is never sold or brokered. Ever." },
 ];
 
 const how = [
-  { k: "H.01", t: "Processed on-device", b: "Behavioural inference happens inside the home." },
+  { k: "H.01", t: "Processed in the home", b: "The intelligence runs on the hub inside the home." },
   { k: "H.02", t: "Works offline", b: "The system does not depend on connectivity to function." },
   {
     k: "H.03",

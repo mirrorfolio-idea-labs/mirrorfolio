@@ -50,7 +50,7 @@ export const flows: Record<Intent, Flow> = {
         <span className="text-muted-foreground">home.</span>
       </>
     ),
-    lede: "We're preparing our first deployments with hospital partners and pilot families. Tell us a little about the household and we'll write when Mirrorfolio reaches your area.",
+    lede: "Our first pilot wave is gated at 50 households in Kerala. Tell us a little about the household and we'll write when Mirrorfolio reaches your area.",
     fields: [
       nameField,
       emailField,
@@ -73,7 +73,7 @@ export const flows: Record<Intent, Flow> = {
     submit: "Join the waitlist",
     confirmation:
       "You're on the waitlist. We'll write when Mirrorfolio reaches your area — no sequences in between.",
-    routedTo: "hello@mirrorfolio.com",
+    routedTo: "kabeer@mirrorfolio.com",
   },
 
   hospital: {
@@ -115,7 +115,7 @@ export const flows: Record<Intent, Flow> = {
     submit: "Start the conversation",
     confirmation:
       "Received. Our clinical partnerships lead will follow up to talk through the discharge pathway.",
-    routedTo: "partners@mirrorfolio.com",
+    routedTo: "kabeer@mirrorfolio.com",
   },
 
   investor: {
@@ -123,12 +123,12 @@ export const flows: Record<Intent, Flow> = {
     eyebrow: "Investors",
     headline: (
       <>
-        Ambient care,
+        Recovery at home,
         <br />
         <span className="text-muted-foreground">built patiently.</span>
       </>
     ),
-    lede: "Eight hardware generations, 30+ real-home validations, first hospital deployments in 2026. Happy to share the detail behind that with investors who work on long horizons.",
+    lede: "Eight hardware generations built, 30+ real-home deployments, and 18 months of supervised validation ahead. Happy to share the detail behind that with investors who work on long horizons.",
     fields: [
       nameField,
       emailField,
@@ -149,7 +149,7 @@ export const flows: Record<Intent, Flow> = {
     note: "We share materials directly, not through a data room drip.",
     submit: "Request materials",
     confirmation: "Thank you. We'll be in touch directly with materials and a time to talk.",
-    routedTo: "invest@mirrorfolio.com",
+    routedTo: "kabeer@mirrorfolio.com",
   },
 
   careers: {
@@ -190,6 +190,6 @@ export const flows: Record<Intent, Flow> = {
     submit: "Send introduction",
     confirmation:
       "Thank you — your introduction is with the team. We read every one, and reply even when the answer is not yet.",
-    routedTo: "careers@mirrorfolio.com",
+    routedTo: "kabeer@mirrorfolio.com",
   },
 };

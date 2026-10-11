@@ -4,19 +4,19 @@
  */
 export const validationMetrics: [string, string][] = [
   ["350+", "family conversations"],
-  ["30+", "real-home validations"],
-  ["54+", "households waiting"],
-  ["Gen 8", "current hardware"],
+  ["30+", "real-home deployments"],
+  ["54", "households signed up for the first pilot wave"],
+  ["8", "hardware generations built"],
 ];
 
 /** Full proof line — homepage hero, company page. */
 export const proofLine =
-  "350+ family conversations · 30+ real-home validations · 54+ households waiting · Gen 8 hardware";
+  "350+ family conversations · 30+ real-home deployments · 54 households signed up for the first pilot wave · 8 hardware generations built";
 
 /** Short proof line — beside a call to action, where the hesitation lives. */
 export const proofShort =
-  "54+ households waiting · 30+ real-home validations · a person, not a script, replies";
+  "54 households signed up · 30+ real-home deployments · a person, not a script, replies";
 
 /** Clinical proof line — hospital pages. */
 export const proofClinical =
-  "30+ real-home validations · Gen 8 hardware · first hospital deployments in 2026";
+  "30+ real-home deployments · 8 hardware generations built · in discussion with hospital chains in Kerala";

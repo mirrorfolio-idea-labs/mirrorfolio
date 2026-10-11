@@ -2,9 +2,9 @@ import Link from "next/link";
 import { CellGrid, HeadlineRow, SectionRail } from "./Section";
 
 const layers = [
-  { k: "Baseline", t: "What normal is", b: "Weeks of quiet observation build a routine unique to one person." },
-  { k: "Drift", t: "When it changes", b: "Breakfast skipped. Medication delayed. Walking reduced." },
-  { k: "Context", t: "Why it matters", b: "One signal is noise. Several together are meaningful." },
+  { k: "Baseline", t: "What normal is", b: "Weeks at home build a picture of normal for one person." },
+  { k: "Drift", t: "When it changes", b: "Breathing and rest shift. Breakfast skipped. Medication delayed." },
+  { k: "Context", t: "Why it matters", b: "One signal is noise. Physiology and routine together are meaningful." },
   { k: "Signal", t: "Who hears it", b: "Family first. Clinicians when the family chooses to share." },
 ];
 
@@ -19,14 +19,14 @@ export function Solution() {
       <HeadlineRow
         headline={
           <>
-            We don&apos;t monitor health.
+            Routine and physiology,
             <br />
             <span className="text-muted-foreground">
-              We understand routine.
+              read together.
             </span>
           </>
         }
-        body="Mirrorfolio builds a behavioural baseline unique to each person — when they wake, how they move through their home, whether they took their medication, how they slept. When that routine drifts, it means something. And you'll know before the phone call you dread."
+        body="Vital signs describe a body at a moment. Routine shows the pattern across weeks. Mirrorfolio reads both, contactlessly, and builds a baseline unique to each person — how they breathe at rest, when they wake, how they move through their home, whether they took their medication. When that pattern drifts, it means something. And you'll know before the phone call you dread."
       />
       <CellGrid items={layers} />
       <div className="border-t border-border p-5 md:p-8">
